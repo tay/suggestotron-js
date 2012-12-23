@@ -1,0 +1,5 @@
+development:
+  adapter: postgresql
+  database: suggestotron_dev
+  user: admin
+  password: password
