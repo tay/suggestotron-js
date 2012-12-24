@@ -7,6 +7,7 @@ SuggestotronBackbone.Views.TopicsIndex = Backbone.View.extend({
 
     initialize:function () {
         this.collection.on('reset', this.render, this);
+        this.collection.on('remove', this.render, this)
         this.collection.on('add', this.appendTopic, this)
     },
 
@@ -36,7 +37,6 @@ SuggestotronBackbone.Views.TopicsIndex = Backbone.View.extend({
 
     handleError: function(topic, response){
         this.collection.remove(topic);
-        this.render();
         if (response.status == 422) {
             var errors = $.parseJSON(response.responseText);
             for(var attribute in errors){
