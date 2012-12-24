@@ -24,8 +24,7 @@ SuggestotronBackbone.Views.TopicsIndex = Backbone.View.extend({
                 success:function () {
                     $('#new_topic')[0].reset();
                 },
-                error: this.handleError,
-                wait: true
+                error:_.bind(this.handleError, this)
             });
     },
 
@@ -36,6 +35,8 @@ SuggestotronBackbone.Views.TopicsIndex = Backbone.View.extend({
     },
 
     handleError: function(topic, response){
+        this.collection.remove(topic);
+        this.render();
         if (response.status == 422) {
             var errors = $.parseJSON(response.responseText);
             for(var attribute in errors){

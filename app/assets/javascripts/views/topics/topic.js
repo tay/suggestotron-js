@@ -6,15 +6,18 @@ SuggestotronBackbone.Views.Topic = Backbone.View.extend({
         'submit #new_topic_vote':'createVote'
     },
 
+    initialize:function () {
+        this.model.on('change', this.render, this);
+    },
+
     render:function () {
         $(this.el).html(this.template({model:this.model}));
     },
 
     createVote:function (e) {
         e.preventDefault();
-        var vote = new SuggestotronBackbone.Models.Vote({topic:this.model});
-        vote.save({}, {
-            success: function(){alert('saved');}
+        this.model.get('votes').create({}, {
+            success:_.bind(this.render, this)
         });
     }
 });
