@@ -1,1 +1,8 @@
-<%= model.get('title') %>
+<td><%= model.get('title') %></td>
+<td><%= model.get('description') %></td>
+<td><%= model.get('votes').length + ' votes' %>
+<td>
+  <form id="new_topic_vote" class="button_to">
+    <input type="submit" value="+1">
+  </form>
+</td>
