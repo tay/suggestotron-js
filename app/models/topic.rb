@@ -1,6 +1,5 @@
 class Topic < ActiveRecord::Base
   validates :title, :presence => true, :uniqueness => true
-  validates :description, :presence => false
 
   attr_accessible :description, :title
 
@@ -11,7 +10,7 @@ class Topic < ActiveRecord::Base
       id: id,
       title: title,
       description: description,
-      votes: votes
+      vote_count: votes.count
     }
   end
 end

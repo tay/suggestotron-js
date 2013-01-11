@@ -3,3 +3,9 @@ development:
   database: suggestotron_dev
   user: admin
   password: password
+
+test:
+  adapter: postgresql
+  database: suggestotron_test
+  user: admin
+  password: password
