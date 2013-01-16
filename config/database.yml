@@ -7,5 +7,5 @@ development:
 test:
   adapter: postgresql
   database: suggestotron_test
-  user: admin
-  password: password
+  user: postgres
+  password:

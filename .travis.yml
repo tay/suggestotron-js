@@ -1,0 +1,6 @@
+# See http://about.travis-ci.org/docs/user/build-configuration/
+language: ruby
+rvm:
+  - 1.9.3
+script:
+  - RAILS_ENV=test rake db:create db:migrate spec
