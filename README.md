@@ -1,5 +1,8 @@
 suggestotron-backbone
 =====================
+
+![Build Status](https://travis-ci.org/fionatay/suggestotron-backbone.png?branch=master)
+
 A BackboneJS implementation of the Railsbridge Suggestotron app.
 
 View it at http://suggestotron-backbone.herokuapp.com/
