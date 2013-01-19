@@ -3,7 +3,8 @@ SuggestotronBackbone.Views.Topic = Backbone.View.extend({
     tagName:'tr',
 
     events:{
-        'submit #new_topic_vote':'createVote'
+        'submit #new_topic_vote':'upvote',
+        'click #destroy_topic':'destroy'
     },
 
     initialize:function () {
@@ -14,13 +15,18 @@ SuggestotronBackbone.Views.Topic = Backbone.View.extend({
         $(this.el).html(this.template({model:this.model}));
     },
 
-    createVote:function (e) {
+    upvote:function (e) {
         e.preventDefault();
-        var vote = new SuggestotronBackbone.Models.Vote({topic: this.model});
+        var vote = new SuggestotronBackbone.Models.Vote({topic:this.model});
         vote.save({}, {
-            success:_.bind(function(){
+            success:_.bind(function () {
                 this.model.set('vote_count', this.model.get('vote_count') + 1);
             }, this)
         });
+    },
+
+    destroy:function (e) {
+        e.preventDefault();
+        this.model.destroy();
     }
 });

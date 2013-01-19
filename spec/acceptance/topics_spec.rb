@@ -28,4 +28,13 @@ resource 'Topic' do
       status.should == 201
     end
   end
+
+  delete '/topics/:id' do
+
+    let(:id) { Topic.first.id }
+
+    example_request 'Delete a topic' do
+      status.should == 204
+    end
+  end
 end

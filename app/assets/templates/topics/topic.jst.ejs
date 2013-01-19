@@ -2,7 +2,10 @@
 <td><%= model.get('description') %></td>
 <td><%= model.get('vote_count') + ' votes' %>
 <td>
-  <form id="new_topic_vote" class="button_to">
+  <form id="new_topic_vote" action="votes" method="post">
     <input type="submit" value="+1">
   </form>
+</td>
+<td>
+  <a href="#" id="destroy_topic">Delete</a>
 </td>

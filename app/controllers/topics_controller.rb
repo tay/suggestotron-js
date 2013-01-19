@@ -18,4 +18,10 @@ class TopicsController < ApplicationController
       render json: @topic.errors, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    head :no_content
+  end
 end
